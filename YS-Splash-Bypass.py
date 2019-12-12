@@ -1,13 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
 import time, winsound, threading
 
-def Browser(product_page):
+def Browser():
+    product_page = 'https://www.yeezysupply.com/product/FV3260'
     options = Options()
-    options.binary_location = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
     options.add_experimental_option('excludeSwitches', ['enable-automation'])
-    driver = webdriver.Chrome(executable_path = 'C:\\Users\\abasuljevic\\Downloads\\YS-Splash-Bypass-master\\YS-Splash-Bypass-master\\chromedriver.exe', options=options)
+    driver = webdriver.Chrome(executable_path='C:\\Users\\resel\\Downloads\\Symphony-master\\Symphony-master\\chromedriver.exe', options=options)
     splash_page = driver.get(product_page)
     time.sleep(5)
     waiting_loop = True
@@ -22,8 +21,7 @@ def Browser(product_page):
             waiting_loop = False
             pass
 
-product_page = input('Enter Url: ')
-num_of_tasks = input('Enter Number of Firefox Profiles: ')
+num_of_tasks = input('Enter Number of Profiles: ')
 for i in range(int(num_of_tasks)):
-    t = threading.Thread(target=Browser(product_page))
+    t = threading.Thread(target=Browser())
     t.start()
